@@ -7,8 +7,7 @@ public class App {
         int longitud = 0;
 
         while (aux != 0) {
-            int d2 = aux % 10;
-            invertido = invertido * 10 + d2;
+            invertido = (invertido * 10) + aux % 10;
             aux /= 10;
             longitud++;
         }
