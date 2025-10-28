@@ -1,32 +1,27 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.print("Introduzca un número entero: ");
-        int numeroIntroducido = Integer.parseInt(System.console().readLine());
-        System.out.print("Introduzca un dígito: ");
-        int digito = Integer.parseInt(System.console().readLine());
-        System.out.print("Contando de izquierda a derecha, el " + digito + " aparece dentro de " + numeroIntroducido
-                + " en las siguientes posiciones: ");
-        // le da la vueta al número y calcula la longitud
-        int numero = numeroIntroducido;
-        int volteado = 0;
+        int num = Integer.parseInt(System.console().readLine("Introduzca un número entero: "));
+        int d1 = Integer.parseInt(System.console().readLine("Introduzca un dígito: "));
+        int aux = num;
+        int invertido = 0;
         int longitud = 0;
-        int posicion = 1;
-        if (numero == 0) {
-            longitud = 1;
-        }
-        while (numero > 0) {
-            volteado = (volteado * 10) + (numero % 10);
-            numero /= 10;
+
+        while (aux != 0) {
+            int d2 = aux % 10;
+            invertido = invertido * 10 + d2;
+            aux /= 10;
             longitud++;
-        } 
-        while (volteado > 0) {
-            if ((volteado % 10) == digito) {
-                System.out.print(posicion + " ");
+        }
+        System.out.printf("Contando de izquierda a derecha el %d aparece dentro de %d en las siguientes posciciones: ",
+                d1, num);
+
+        for (int i = 1; i <= longitud; i++) {
+            int d2 = invertido % 10;
+            if (d2 == d1) {
+                System.out.print(i + " ");
             }
-            volteado /= 10;
-            posicion++;
-        } 
-        System.out.println();
+            invertido /= 10;
+        }
 
     }
 }
